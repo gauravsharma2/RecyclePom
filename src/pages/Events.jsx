@@ -1,5 +1,6 @@
 import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaPaw } from 'react-icons/fa'
-import { events } from '../data'
+import SEO from '../components/SEO'
+import { useData } from '../context/DataContext'
 import './Events.css'
 
 const typeColors = {
@@ -9,8 +10,11 @@ const typeColors = {
 }
 
 export default function Events() {
+  const { events } = useData()
+
   return (
     <div className="events-page">
+      <SEO title="Events" description="Join us at upcoming adoption events, workshops, and fundraisers. Meet Pomeranians in person!" path="/events" />
       <section className="page-hero page-hero--events">
         <div className="container">
           <h1 className="page-hero__title">Events &amp; News</h1>

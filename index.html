@@ -12,10 +12,35 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="RecycledPoms" />
     <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Recycled Pomeranians" />
+    <meta property="og:title" content="Recycled Pomeranians | Dog Rescue &amp; Adoption" />
+    <meta property="og:description" content="Giving Pomeranians a Second Chance at Life. Adopt, Foster, Donate." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop" />
+    <meta property="og:url" content="https://gauravsharma2.github.io/RecyclePom/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
     <title>Recycled Pomeranians | Dog Rescue &amp; Adoption</title>
+
+    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
+    <script>
+      window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+      if (window.GA_MEASUREMENT_ID && window.GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', window.GA_MEASUREMENT_ID);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

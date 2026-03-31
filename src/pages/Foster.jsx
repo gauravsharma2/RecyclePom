@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { FaHeart, FaHome, FaCheckCircle, FaPaw } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
+import SEO from '../components/SEO'
+import { config } from '../config'
 import './Foster.css'
 
 export default function Foster() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
   const [form, setForm] = useState({
     name: '', email: '', phone: '', address: '',
     housing: '', pets: '', experience: '', availability: '', why: '',
@@ -13,13 +17,34 @@ export default function Foster() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    const { serviceId, fosterTemplateId, publicKey } = config.emailjs
+    if (serviceId && serviceId !== 'YOUR_SERVICE_ID') {
+      setSending(true)
+      try {
+        await emailjs.send(serviceId, fosterTemplateId, {
+          from_name: form.name,
+          from_email: form.email,
+          phone: form.phone,
+          address: form.address,
+          housing: form.housing,
+          pets: form.pets,
+          experience: form.experience,
+          availability: form.availability,
+          why: form.why,
+        }, publicKey)
+      } catch {
+        // Email sending failed
+      }
+      setSending(false)
+    }
     setSubmitted(true)
   }
 
   return (
     <div className="foster-page">
+      <SEO title="Become a Foster" description="Open your home and heart to a rescued Pomeranian. We provide everything you need — food, supplies, vet care, and 24/7 support." path="/foster" />
       <section className="page-hero page-hero--foster">
         <div className="container">
           <h1 className="page-hero__title">Become a Foster</h1>
@@ -131,8 +156,8 @@ export default function Foster() {
                   <textarea name="why" className="form-textarea" required placeholder="What motivates you to foster a Pom?" value={form.why} onChange={handleChange} />
                 </div>
 
-                <button type="submit" className="btn btn-secondary btn-lg">
-                  <FaPaw /> Submit Application
+                <button type="submit" className="btn btn-secondary btn-lg" disabled={sending}>
+                  <FaPaw /> {sending ? 'Submitting...' : 'Submit Application'}
                 </button>
               </form>
             </div>

@@ -9,14 +9,21 @@ import {
   FaHeart,
 } from 'react-icons/fa'
 import DogCard from '../components/DogCard'
-import { dogs, successStories, stats } from '../data'
+import SEO from '../components/SEO'
+import { useData } from '../context/DataContext'
 import './Home.css'
 
 export default function Home() {
+  const { dogs, successStories, stats } = useData()
   const featuredDogs = dogs.filter(d => d.status === 'available').slice(0, 3)
 
   return (
     <>
+      <SEO
+        title="Home"
+        description="Recycled Pomeranians - Giving Pomeranians a Second Chance at Life. Adopt, foster, or donate to help rescued Poms find loving homes."
+        path="/"
+      />
       {/* ===== HERO ===== */}
       <section className="hero">
         <div className="hero__bg" />

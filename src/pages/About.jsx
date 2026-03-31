@@ -1,10 +1,14 @@
 import { FaHeart, FaPaw, FaHandHoldingHeart, FaFacebookF, FaInstagram, FaGlobe } from 'react-icons/fa'
-import { stats, teamMembers, successStories } from '../data'
+import SEO from '../components/SEO'
+import { useData } from '../context/DataContext'
 import './About.css'
 
 export default function About() {
+  const { stats, teamMembers, successStories } = useData()
+
   return (
     <div className="about-page">
+      <SEO title="About Us" description="Learn about Recycled Pomeranians — our mission, our team, and the success stories that keep us going." path="/about" />
       <section className="page-hero page-hero--about">
         <div className="container">
           <h1 className="page-hero__title">About Recycled Pomeranians</h1>

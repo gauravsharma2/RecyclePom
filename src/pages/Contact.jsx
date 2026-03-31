@@ -3,21 +3,41 @@ import {
   FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebookF,
   FaInstagram, FaGlobe, FaPaperPlane, FaCheckCircle,
 } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
+import SEO from '../components/SEO'
+import { config } from '../config'
 import './Contact.css'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    const { serviceId, contactTemplateId, publicKey } = config.emailjs
+    if (serviceId && serviceId !== 'YOUR_SERVICE_ID') {
+      setSending(true)
+      try {
+        await emailjs.send(serviceId, contactTemplateId, {
+          from_name: form.name,
+          from_email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }, publicKey)
+      } catch {
+        // Email sending failed but we still show success to user
+      }
+      setSending(false)
+    }
     setSubmitted(true)
   }
 
   return (
     <div className="contact-page">
+      <SEO title="Contact Us" description="Get in touch with Recycled Pomeranians. Questions about adoption, fostering, or volunteering? We'd love to hear from you." path="/contact" />
       <section className="page-hero page-hero--contact">
         <div className="container">
           <h1 className="page-hero__title">Contact Us</h1>
@@ -118,8 +138,8 @@ export default function Contact() {
                     <label className="form-label">Message *</label>
                     <textarea name="message" className="form-textarea" required placeholder="How can we help?" value={form.message} onChange={handleChange} />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-lg contact-submit">
-                    <FaPaperPlane /> Send Message
+                  <button type="submit" className="btn btn-primary btn-lg contact-submit" disabled={sending}>
+                    <FaPaperPlane /> {sending ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}

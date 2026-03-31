@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { FaHeart, FaPaw, FaStethoscope, FaUtensils, FaBed, FaGift } from 'react-icons/fa'
+import SEO from '../components/SEO'
+import { config } from '../config'
 import './Donate.css'
 
 const amounts = [25, 50, 100, 250, 500]
@@ -22,6 +24,7 @@ export default function Donate() {
 
   return (
     <div className="donate-page">
+      <SEO title="Donate" description="Your donation funds veterinary care, food, and shelter for rescued Pomeranians. Every dollar saves a life." path="/donate" />
       <section className="page-hero page-hero--donate">
         <div className="container">
           <h1 className="page-hero__title">Support Our Mission</h1>
@@ -86,7 +89,16 @@ export default function Donate() {
                   <strong>${displayAmount}</strong>
                 </div>
 
-                <button className="btn btn-primary btn-lg donate-submit">
+                <button
+                  className="btn btn-primary btn-lg donate-submit"
+                  onClick={() => {
+                    if (config.stripe.donationLink) {
+                      window.open(config.stripe.donationLink, '_blank', 'noopener')
+                    } else {
+                      alert('Donation payment is being set up. Please contact us directly to donate.')
+                    }
+                  }}
+                >
                   <FaHeart /> Donate ${displayAmount} {isMonthly ? '/ month' : ''}
                 </button>
 

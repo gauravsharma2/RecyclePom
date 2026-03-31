@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { FaSearch, FaFilter } from 'react-icons/fa'
 import DogCard from '../components/DogCard'
-import { dogs } from '../data'
+import SEO from '../components/SEO'
+import { useData } from '../context/DataContext'
 import './Adopt.css'
 
 const genderOptions = ['All', 'Male', 'Female']
 const statusOptions = ['All', 'available', 'pending']
 
 export default function Adopt() {
+  const { dogs } = useData()
   const [search, setSearch] = useState('')
   const [gender, setGender] = useState('All')
   const [status, setStatus] = useState('All')
@@ -21,6 +23,7 @@ export default function Adopt() {
 
   return (
     <div className="adopt-page">
+      <SEO title="Adopt a Pomeranian" description="Browse our adoptable Pomeranians and find your new best friend. Each Pom is fully vetted and ready for a loving home." path="/adopt" />
       <section className="page-hero page-hero--adopt">
         <div className="container">
           <h1 className="page-hero__title">Adopt a Pomeranian</h1>

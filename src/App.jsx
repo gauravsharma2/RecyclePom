@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { DataProvider } from './context/DataContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import InstallPrompt from './components/InstallPrompt'
@@ -10,14 +11,19 @@ import Donate from './pages/Donate'
 import About from './pages/About'
 import Events from './pages/Events'
 import Contact from './pages/Contact'
+import Admin from './pages/Admin'
+import AdminLogin from './pages/AdminLogin'
 import ScrollToTop from './components/ScrollToTop'
 
-export default function App() {
+function AppContent() {
+  const location = useLocation()
+  const isAdmin = location.pathname.startsWith('/admin')
+
   return (
-    <Router basename="/RecyclePom">
+    <>
       <ScrollToTop />
-      <OfflineBanner />
-      <Navbar />
+      {!isAdmin && <OfflineBanner />}
+      {!isAdmin && <Navbar />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,10 +33,22 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
-      <Footer />
-      <InstallPrompt />
-    </Router>
+      {!isAdmin && <Footer />}
+      {!isAdmin && <InstallPrompt />}
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <DataProvider>
+      <Router basename="/RecyclePom">
+        <AppContent />
+      </Router>
+    </DataProvider>
   )
 }
