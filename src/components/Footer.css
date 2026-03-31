@@ -160,6 +160,16 @@
   opacity: 0.6;
 }
 
+.footer__admin-link {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.footer__admin-link:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
 @media (max-width: 900px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;

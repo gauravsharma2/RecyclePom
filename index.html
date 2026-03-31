@@ -44,6 +44,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // GitHub Pages SPA redirect recovery
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var route = params.get('route');
+        if (route) {
+          window.history.replaceState(null, '', '/RecyclePom' + route);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

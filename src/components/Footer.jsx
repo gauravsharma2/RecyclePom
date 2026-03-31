@@ -97,6 +97,8 @@ export default function Footer() {
             </p>
             <p className="footer__nonprofit">
               Recycled Pomeranians is a 501(c)(3) nonprofit organization.
+              {' · '}
+              <Link to="/admin/login" className="footer__admin-link">Admin</Link>
             </p>
           </div>
         </div>

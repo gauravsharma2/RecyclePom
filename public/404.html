@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Recycled Pomeranians</title>
+    <script>
+      // GitHub Pages SPA redirect — preserves the path for React Router
+      var repo = '/RecyclePom';
+      var fullPath = window.location.pathname;
+      // Strip the repo base so we get the SPA route, e.g. /admin/login
+      var route = fullPath.startsWith(repo) ? fullPath.slice(repo.length) : fullPath;
+      // Redirect to index.html with the route stored in a query param
+      var url = repo + '/?route=' + encodeURIComponent(route + window.location.search + window.location.hash);
+      window.location.replace(url);
+    </script>
+  </head>
+  <body></body>
+</html>
