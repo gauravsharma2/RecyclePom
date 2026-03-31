@@ -1,0 +1,18 @@
+.offline-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: var(--color-accent-dark);
+  color: white;
+  text-align: center;
+  padding: 0.5rem var(--space-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  animation: fadeIn 0.3s ease;
+}

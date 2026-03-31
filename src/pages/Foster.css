@@ -1,0 +1,85 @@
+.foster-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.foster-benefit {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.foster-benefit__icon {
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.foster-benefit h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.foster-benefit p {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+.foster-form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.foster-form {
+  margin-top: var(--space-xl);
+}
+
+.foster-form .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.foster-success {
+  text-align: center;
+  padding: var(--space-3xl);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.foster-success__icon {
+  font-size: 4rem;
+  color: var(--color-success);
+  margin-bottom: var(--space-lg);
+}
+
+.foster-success h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.foster-success p {
+  color: var(--color-text-light);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.foster-success a {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .foster-benefits {
+    grid-template-columns: 1fr;
+  }
+}

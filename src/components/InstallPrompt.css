@@ -1,0 +1,72 @@
+.install-prompt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: var(--space-md);
+  background: rgba(45, 26, 36, 0.95);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.4s ease;
+  /* Safe area for phones with notch/gesture bar */
+  padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+}
+
+.install-prompt__inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.install-prompt__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: white;
+}
+
+.install-prompt__text strong {
+  font-size: 1rem;
+}
+
+.install-prompt__text span {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.install-prompt__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.install-prompt__btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+.install-prompt__close {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  padding: var(--space-sm);
+  transition: color var(--transition-fast);
+}
+
+.install-prompt__close:hover {
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .install-prompt__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .install-prompt__actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
